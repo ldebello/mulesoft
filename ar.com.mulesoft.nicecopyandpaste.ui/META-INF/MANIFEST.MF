@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: NiceCopyAndPaste
+Bundle-Localization: plugin
+Bundle-SymbolicName: ar.com.mulesoft.nicecopyandpaste.ui;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: ar.com.mulesoft.nicecopyandpaste.ui.Activator
+Bundle-Vendor: MuleSoft
+Require-Bundle: org.eclipse.ui,
+ org.eclipse.core.runtime
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-ActivationPolicy: lazy
