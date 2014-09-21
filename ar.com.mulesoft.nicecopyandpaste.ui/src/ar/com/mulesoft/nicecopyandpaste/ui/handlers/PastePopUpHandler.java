@@ -35,7 +35,6 @@ import ar.com.mulesoft.nicecopyandpaste.ui.nls.Messages;
  */
 public class PastePopUpHandler extends AbstractHandler {
 
-	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
 		String[] items = ClipboardManager.getInstance().getItems();
 		IWorkbenchWindow workbench = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
@@ -59,7 +58,7 @@ public class PastePopUpHandler extends AbstractHandler {
         		textArea.setLayoutData(gridData);
 
         		getTableViewer().addSelectionChangedListener(new ISelectionChangedListener() {
-					@Override
+        			
 					public void selectionChanged(SelectionChangedEvent event) {
 						IStructuredSelection selection = (IStructuredSelection) event.getSelection();
 						textArea.setText(!selection.isEmpty() ? selection.getFirstElement().toString() : "");

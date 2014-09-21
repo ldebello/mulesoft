@@ -14,7 +14,7 @@ import ar.com.mulesoft.nicecopyandpaste.ui.constants.PluginConstants;
  */
 public class ClipboardManager {
 
-	private final Deque<String> items = new LinkedList<String>();
+	private Deque<String> items = new LinkedList<String>();
 
 	private ClipboardManager() {
 	}
@@ -27,6 +27,14 @@ public class ClipboardManager {
 		private static final ClipboardManager INSTANCE = new ClipboardManager();
 	}
 
+	/**
+	 * Add the specified element as the first element in the history
+	 * if the element already exists, it will remove it and add it again as first item
+	 * 
+	 * This method takes care of checking the maximum size configured in the preferences and remove the old items
+	 * 
+	 * @param contents item to be added to the clipboard history
+	 */
 	public void add(String contents) {
 		if (items.contains(contents)) {
 			items.remove(contents);
@@ -39,6 +47,10 @@ public class ClipboardManager {
 		}
 
 		items.addFirst(contents);
+	}
+	
+	public void clear() {
+		items = new LinkedList<String>();
 	}
 
 	public String[] getItems() {

@@ -2,47 +2,121 @@
 <?eclipse version="3.4"?>
 <plugin>
 
-   <extension
-         point="org.eclipse.ui.startup">
-      <startup
-            class="ar.com.mulesoft.nicecopyandpaste.ui.Startup">
-      </startup>
-   </extension>
+	<extension
+		point="org.eclipse.ui.startup">
+      	<startup
+			class="ar.com.mulesoft.nicecopyandpaste.ui.Startup">
+      	</startup>
+   	</extension>
    
-    <extension
-         point="org.eclipse.ui.preferencePages">
-      <page
+	<extension
+		point="org.eclipse.ui.preferencePages">
+      	<page
             id="NiceCopyAndPaste.preferences.pluginPreferencePage"
             class="ar.com.mulesoft.nicecopyandpaste.ui.preferences.PluginPreferencePage"            
             name="%preferences.title">
-      </page>
-   </extension>
+      	</page>
+   	</extension>
    
-   <extension
-         point="org.eclipse.ui.commands">      
-      <command
+   	<extension
+		point="org.eclipse.ui.commands">      
+		<command
 			name="%commands.pastePopUp.name"
 			description="%commands.pastePopUp.description"
             categoryId="org.eclipse.ui.category.edit"            
             id="NiceCopyAndPaste.commands.pastePopUp">
-      </command>  
-   </extension>
+      	</command>
+      
+      	<command
+			name="%commands.clearClipboardHistory.name"
+			description="%commands.clearClipboardHistory.description"            
+            id="NiceCopyAndPaste.commands.clearClipboardHistory">
+      	</command>
+      
+		<command
+			name="%commands.popupGistAdd.name"
+			description="%commands.popupGistAdd.description"            
+            id="NiceCopyAndPaste.commands.popupGistAdd">
+      	</command>
+   	</extension>
 
 	<extension
-         point="org.eclipse.ui.handlers">
-      <handler
+		point="org.eclipse.ui.handlers">
+      	<handler
             class="ar.com.mulesoft.nicecopyandpaste.ui.handlers.PastePopUpHandler"
             commandId="NiceCopyAndPaste.commands.pastePopUp">
-      </handler>      
-   </extension>
+      	</handler>
+      	<handler
+            class="ar.com.mulesoft.nicecopyandpaste.ui.handlers.ClearClipboardHistoryHandler"
+            commandId="NiceCopyAndPaste.commands.clearClipboardHistory">
+      	</handler>
+      	<handler
+            class="ar.com.mulesoft.nicecopyandpaste.ui.handlers.PopUpGistAddHandler"
+            commandId="NiceCopyAndPaste.commands.popupGistAdd">
+      	</handler>
+   	</extension>
    
-   <extension
-         point="org.eclipse.ui.bindings">
-      <key
+	<extension
+		point="org.eclipse.ui.bindings">
+      	<key
             commandId="NiceCopyAndPaste.commands.pastePopUp"
             contextId="org.eclipse.ui.contexts.dialogAndWindow"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+M2+V">
-      </key>      
-   </extension>
+      	</key>      
+   	</extension>
+   
+   	<extension 
+   		point="org.eclipse.core.expressions.propertyTesters">
+     	<propertyTester
+			class="ar.com.mulesoft.nicecopyandpaste.ui.propertytesters.TextSelectionTester"
+           	id="x.TextSelectionTester"
+           	namespace="textSelected"
+           	properties="text"
+           	type="org.eclipse.jface.text.ITextSelection">
+     	</propertyTester>
+  </extension>
+  
+   	<extension
+         point="org.eclipse.ui.menus">
+		<menuContribution 
+			locationURI="toolbar:org.eclipse.ui.main.toolbar"> 
+   			<toolbar 
+         		id="NiceCopyAndPaste.toolbars.clearClipboardHistory"> 
+      			<command 
+      				commandId="NiceCopyAndPaste.commands.clearClipboardHistory"
+      				icon="icons/clear.png"      				
+                  	label="%commands.clearClipboardHistory.name"
+                  	tooltip="%commands.clearClipboardHistory.description">                  	
+				</command> 
+   			</toolbar> 
+		</menuContribution>
+		
+      	<menuContribution
+            locationURI="popup:org.eclipse.jdt.ui.CompilationUnitEditor.EditorContext">
+            <command
+				commandId="NiceCopyAndPaste.commands.popupGistAdd">
+				<visibleWhen>
+					<with variable="selection">
+         				<test property="textSelected.text" value="true"> </test>
+      				</with>
+				</visibleWhen>			
+            </command>
+		</menuContribution>      
+   	</extension>
+   
+   	<extension
+		point="org.eclipse.ui.views">
+      	<category
+			name="%categories.gistsCategory.name"
+            id="NiceCopyAndPaste.categories.gists" >
+      	</category>
+      	<view
+			name="%categories.gistsViewer.name"
+            icon="icons/gists.png"
+            category="NiceCopyAndPaste.categories.gists"
+            class="ar.com.mulesoft.nicecopyandpaste.ui.gists.GistsView"
+            id="NiceCopyAndPaste.views.gists">
+      	</view>
+   	</extension>
 </plugin>

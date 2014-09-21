@@ -36,15 +36,12 @@ public class Startup implements IStartup {
 
 	private static final class CommandListener implements IExecutionListener {
 
-		@Override
 		public void notHandled(String commandId, NotHandledException exception) {
 		}
 
-		@Override
 		public void postExecuteFailure(String commandId, ExecutionException exception) {			
 		}
 
-		@Override
 		public void postExecuteSuccess(String commandId, Object returnValue) {
 			if (Activator.getDefault().isPluginMonitoringCutAndCopy()) {
 				if (CUT_ACTION.equals(commandId) || COPY_ACTION.equals(commandId)) {
@@ -59,7 +56,6 @@ public class Startup implements IStartup {
 			}			
 		}
 
-		@Override
 		public void preExecute(String commandId, ExecutionEvent event) {	
 		}		
 	}

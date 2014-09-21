@@ -13,9 +13,21 @@ public class Messages extends NLS {
 
 	public static String PluginPreferencePage_MaximumNumberOfItems;
 	public static String PluginPreferencePage_IsPluginMonitoring;
+	public static String PluginPreferencePage_GitHubUserName;
+	public static String PluginPreferencePage_GitHubPassword;
 	public static String PluginPreferencePage_Description;
+		
 	public static String ListDialog_Title;
 
+	public static String GistsView_LblDescription;
+	
+	public static String GistsView_ColumnId;
+	public static String GistsView_ColumnDescription;
+	public static String GistsView_ColumnURL;
+	
+	public static String AddGistPage_Title;
+	public static String AddGistPage_LblDescription;
+		
 	static {
 		NLS.initializeMessages(BUNDLE_NAME, Messages.class);
 	}

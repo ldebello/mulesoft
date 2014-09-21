@@ -1,16 +1,21 @@
 package ar.com.mulesoft.nicecopyandpaste.ui;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.ui.statushandlers.StatusManager;
 import org.osgi.framework.BundleContext;
 
 import ar.com.mulesoft.nicecopyandpaste.ui.constants.PluginConstants;
+import ar.com.mulesoft.nicecopyandpaste.ui.gists.GistsFacade;
+import ar.com.mulesoft.nicecopyandpaste.ui.gists.GitHubAdapter;
 
 /**
  * The activator class controls the plug-in life cycle
  */
-public class Activator extends AbstractUIPlugin {
+public class Activator extends AbstractUIPlugin implements GitHubAdapter {
 
 	// The plug-in ID
 	public static final String PLUGIN_ID = "ar.com.mulesoft.nicecopyandpaste.ui"; //$NON-NLS-1$
@@ -32,8 +37,12 @@ public class Activator extends AbstractUIPlugin {
 
 	@Override
 	public void stop(BundleContext context) throws Exception {
-		plugin = null;
-		super.stop(context);
+		try {
+			GistsFacade.getInstance().deleteAuthorizations(Activator.getDefault());
+			plugin = null;			
+		} finally {
+			super.stop(context);
+		}
 	}
 
 	/**
@@ -69,4 +78,17 @@ public class Activator extends AbstractUIPlugin {
 	public int getMaxNumberOfItems() {
         return getPreferenceStore().getInt(PluginConstants.MAX_NUMBER_OF_ITEMS);
     }
+	
+	public String getLogin() {
+		return getPreferenceStore().getString(PluginConstants.GIT_HUB_USER_NAME);
+	}
+
+	public String getPassword() {
+		return getPreferenceStore().getString(PluginConstants.GIT_HUB_PASSWORD);
+	}
+
+	public void handleException(Exception exception) {
+		IStatus browserErrorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, exception.getMessage(), null);
+		StatusManager.getManager().handle(browserErrorStatus, StatusManager.SHOW);		
+	}
 }
