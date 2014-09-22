@@ -46,6 +46,8 @@ public class GistsView extends ViewPart {
 
 	private GistsFilter filter;
 	private TableViewer tableViewer = null;
+	// org.eclipse.osgi.services Analizar registracion de eventos
+	// private ServiceRegistration<EventHandler> serviceRegistration;
 	
 	public GistsView() {
 	}
@@ -92,6 +94,28 @@ public class GistsView extends ViewPart {
 		});
 		
 		refreshGrid();
+		
+		// registerListener();
+	}
+
+	/*
+	private void registerListener() {
+		BundleContext ctx = FrameworkUtil.getBundle(GistsView.class).getBundleContext();
+		EventHandler handler = new EventHandler() {
+			public void handleEvent(Event event) {
+				refreshGrid();
+			}
+		};
+		Dictionary<String,String> properties = new Hashtable<String, String>();
+	    properties.put(EventConstants.EVENT_TOPIC, "viewCommunication/*");
+	    serviceRegistration = ctx.registerService(EventHandler.class, handler, properties);
+	}
+	*/
+	
+	@Override
+	public void dispose() {	
+		super.dispose();
+		// serviceRegistration.unregister();		
 	}
 	
 	public void refreshGrid() {
@@ -170,7 +194,6 @@ public class GistsView extends ViewPart {
 	}
 	
 	private static class GistsDoubleClickListener implements IDoubleClickListener {
-
 		public void doubleClick(DoubleClickEvent event) {
 			IStructuredSelection sel = (IStructuredSelection) event.getSelection();
 			Gist gist = (Gist) sel.getFirstElement();
@@ -199,5 +222,5 @@ public class GistsView extends ViewPart {
 			Gist gist = (Gist) element;
 			return (descriptionToFilter == null || descriptionToFilter.length() == 0) ? true : gist.getDescription().matches(descriptionToFilter);
 		}
-	}
+	}	
 }

@@ -48,10 +48,25 @@ public class AddGistWizard extends Wizard {
 		Job job = new Job("Creating Gist") {
 			protected IStatus run(IProgressMonitor monitor) {
 				GistsFacade.getInstance().publishGist(Activator.getDefault(), description, data);
+				
+				// dispatchNotificationEvent();
+		           
 				monitor.done();
 				
 				return Status.OK_STATUS;
 			}
+
+			/*
+			private void dispatchNotificationEvent() {
+				BundleContext ctx = FrameworkUtil.getBundle(AddGistWizard.class).getBundleContext();
+		        ServiceReference<EventAdmin> ref = ctx.getServiceReference(EventAdmin.class);
+		        EventAdmin eventAdmin = ctx.getService(ref);
+		        Map<String,Object> properties = new HashMap<String, Object>();
+
+		        Event event = new Event("viewCommunication/AddGistCompleted", properties);
+		        eventAdmin.postEvent(event);
+			}
+			*/
 		};
 		job.setUser(false);
 		job.schedule();
