@@ -12,7 +12,11 @@ import org.eclipse.jface.wizard.Wizard;
 import ar.com.mulesoft.nicecopyandpaste.ui.Activator;
 import ar.com.mulesoft.nicecopyandpaste.ui.gists.GistsFacade;
 
-
+/**
+ * Wizard to create a new gists.
+ * 
+ * @author ldebello
+ */
 public class AddGistWizard extends Wizard {
 
 	private String fileName;

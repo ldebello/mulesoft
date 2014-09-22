@@ -7,8 +7,7 @@ import org.eclipse.core.commands.ExecutionException;
 import ar.com.mulesoft.nicecopyandpaste.ui.managers.ClipboardManager;
 
 /**
- *
- * Handler to clear the clipboard history
+ * Handler to clear the clipboard history.
  *
  * @author ldebello
  *

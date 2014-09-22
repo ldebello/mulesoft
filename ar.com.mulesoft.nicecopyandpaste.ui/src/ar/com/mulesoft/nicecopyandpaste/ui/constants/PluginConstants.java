@@ -1,10 +1,9 @@
 package ar.com.mulesoft.nicecopyandpaste.ui.constants;
 
 /**
- * Simple class to keep all the constants
+ * Single point to define constants
  *
  * @author ldebello
- *
  */
 public final class PluginConstants {
 

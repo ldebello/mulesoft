@@ -8,6 +8,11 @@ import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.TableColumn;
 
+/**
+ * Some utils methods to work with TableViewer.
+ * 
+ * @author ldebello
+ */
 public class TableViewerHelper {
 	public static void addFixedColumn(TableViewer tableViewer, AbstractColumnLayout layout, String header, int widthInPixels) {		
 		TableViewerColumn tableViewerColumn = new TableViewerColumn(tableViewer, SWT.NONE);

@@ -3,10 +3,9 @@ package ar.com.mulesoft.nicecopyandpaste.ui.nls;
 import org.eclipse.osgi.util.NLS;
 
 /**
- * Class Messages handles I18N functionality
+ * Class Messages handles I18N functionality.
  *
  * @author ldebello
- *
  */
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "resources.Messages";

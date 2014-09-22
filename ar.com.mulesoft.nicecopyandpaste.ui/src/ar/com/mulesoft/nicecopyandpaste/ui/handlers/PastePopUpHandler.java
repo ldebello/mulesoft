@@ -27,11 +27,9 @@ import ar.com.mulesoft.nicecopyandpaste.ui.managers.ClipboardManager;
 import ar.com.mulesoft.nicecopyandpaste.ui.nls.Messages;
 
 /**
- *
- * This handler shows a pop-up containing every item stored from the clipboard.
+ * This handler shows a pop-up containing every item stored in the clipboard history.
  *
  * @author ldebello
- *
  */
 public class PastePopUpHandler extends AbstractHandler {
 

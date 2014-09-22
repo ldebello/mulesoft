@@ -13,10 +13,9 @@ import ar.com.mulesoft.nicecopyandpaste.ui.constants.PluginConstants;
 import ar.com.mulesoft.nicecopyandpaste.ui.nls.Messages;
 
 /**
- * This page manages the plug-in preferences
+ * This page manages the plug-in preferences.
  *
  * @author ldebello
- *
  */
 public class PluginPreferencePage extends FieldEditorPreferencePage implements
 		IWorkbenchPreferencePage {

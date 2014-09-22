@@ -18,14 +18,12 @@ import ar.com.mulesoft.nicecopyandpaste.ui.managers.ClipboardManager;
  * adds a listener to monitoring the cut and copy actions.
  * 
  * @author ldebello
- * 
  */
 public class Startup implements IStartup {
 	
 	private static final String CUT_ACTION = ActionFactory.CUT.getCommandId();
 	private static final String COPY_ACTION = ActionFactory.COPY.getCommandId();
 	
-
 	public void earlyStartup() {
 		ICommandService commandService = (ICommandService) PlatformUI.getWorkbench().getAdapter(ICommandService.class);
 				

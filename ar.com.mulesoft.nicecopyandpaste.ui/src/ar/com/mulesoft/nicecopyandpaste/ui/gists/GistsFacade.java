@@ -17,8 +17,10 @@ import org.eclipse.egit.github.core.service.OAuthService;
 
 
 /**
- * This class is used as an entry point to connect with GistService using a
- * GitHubAdapter to decouple the external data used by this facade
+ * This class is used as a single entry point to connect with GistService 
+ * using a GitHubAdapter to decouple the view layer.
+ * 
+ * @author ldebello
  */
 public final class GistsFacade {
 

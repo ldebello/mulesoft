@@ -37,6 +37,11 @@ import ar.com.mulesoft.nicecopyandpaste.ui.Activator;
 import ar.com.mulesoft.nicecopyandpaste.ui.nls.Messages;
 import ar.com.mulesoft.nicecopyandpaste.ui.util.TableViewerHelper;
 
+/**
+ * A rectangular grid that contains the Id, Description and HTML URL for every gist.
+ * 
+ * @author ldebello
+ */
 public class GistsView extends ViewPart {
 
 	private GistsFilter filter;

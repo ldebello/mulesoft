@@ -10,7 +10,6 @@ import ar.com.mulesoft.nicecopyandpaste.ui.constants.PluginConstants;
  * This class stores the items used by the user
  *
  * @author ldebello
- *
  */
 public class ClipboardManager {
 

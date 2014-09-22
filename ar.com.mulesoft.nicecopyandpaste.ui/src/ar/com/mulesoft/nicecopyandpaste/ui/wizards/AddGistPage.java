@@ -10,6 +10,11 @@ import org.eclipse.swt.widgets.Text;
 
 import ar.com.mulesoft.nicecopyandpaste.ui.nls.Messages;
 
+/**
+ * Wizard page which is shown to user. 
+ * 
+ * @author ldebello
+ */
 public class AddGistPage extends WizardPage {
 
 	private Text txtDescription;

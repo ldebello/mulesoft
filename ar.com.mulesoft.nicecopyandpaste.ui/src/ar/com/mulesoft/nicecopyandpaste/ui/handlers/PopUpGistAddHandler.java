@@ -17,11 +17,11 @@ import org.eclipse.ui.texteditor.ITextEditor;
 import ar.com.mulesoft.nicecopyandpaste.ui.wizards.AddGistWizard;
 
 /**
- *
- * Handler to publish the selected code in a new gist
+ * Handler to publish the selected code in a new gist. <p>
+ * It shows a wizard in order to customize the selected text and the description
+ * for this gist.
  *
  * @author ldebello
- *
  */
 public class PopUpGistAddHandler extends AbstractHandler {
 

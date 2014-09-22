@@ -13,7 +13,7 @@ import ar.com.mulesoft.nicecopyandpaste.ui.gists.GistsFacade;
 import ar.com.mulesoft.nicecopyandpaste.ui.gists.GitHubAdapter;
 
 /**
- * The activator class controls the plug-in life cycle
+ * The activator class controls the plug-in life cycle.
  */
 public class Activator extends AbstractUIPlugin implements GitHubAdapter {
 
@@ -23,9 +23,6 @@ public class Activator extends AbstractUIPlugin implements GitHubAdapter {
 	// The shared instance
 	private static Activator plugin;
 
-	/**
-	 * The constructor
-	 */
 	public Activator() {
 	}
 
@@ -46,7 +43,7 @@ public class Activator extends AbstractUIPlugin implements GitHubAdapter {
 	}
 
 	/**
-	 * Returns the shared instance
+	 * Returns the shared instance.
 	 *
 	 * @return the shared instance
 	 */
@@ -56,7 +53,7 @@ public class Activator extends AbstractUIPlugin implements GitHubAdapter {
 
 	/**
 	 * Returns an image descriptor for the image file at the given
-	 * plug-in relative path
+	 * plug-in relative path.
 	 *
 	 * @param path the path
 	 * @return the image descriptor
@@ -87,6 +84,12 @@ public class Activator extends AbstractUIPlugin implements GitHubAdapter {
 		return getPreferenceStore().getString(PluginConstants.GIT_HUB_PASSWORD);
 	}
 
+	/**
+	 * This method is in charge of handling all the exceptions 
+	 * and show them in a proper way.
+	 *
+	 * @param exception the exception
+	 */
 	public void handleException(Exception exception) {
 		IStatus browserErrorStatus = new Status(IStatus.ERROR, Activator.PLUGIN_ID, exception.getMessage(), null);
 		StatusManager.getManager().handle(browserErrorStatus, StatusManager.SHOW);		
